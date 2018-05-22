@@ -1,14 +1,25 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      StudentSearchApp
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <input ion-text type="text" [(ngModel)]="question">
+
+  <br />
+
+  <button ion-button block (click)="ask(question)">
+    ask
+  </button>
+
+  <div >
+    {{ answer }}
+  </div>
+
+  
+
 </ion-content>
