@@ -9,7 +9,8 @@ import { Http, Headers, RequestOptions } from '@angular/http';
   templateUrl: 'home.html'
 })
 export class HomePage {
-   answer ;
+
+   answer=" " ;
 
   constructor(public navCtrl: NavController, public http: Http) {
 
@@ -18,6 +19,9 @@ export class HomePage {
 
 
 ask(question) {
+
+	try {
+    
     var headers = new Headers();
     headers.append("Accept", 'application/json');
     headers.append('Content-Type', 'application/json' );
@@ -31,6 +35,7 @@ ask(question) {
     "timezone": "America/New_York"
     }
     
+    try{
     this.http.post("https://api.dialogflow.com/v1/query?v=20150910", postParams, options)
       .subscribe(data => {
       	let obj = JSON.parse(data['_body']);
@@ -41,7 +46,15 @@ ask(question) {
         console.log(error);// Error getting the data
       });
   }
+  catch(e){
+  	console.log(e);
+  }
+  }
 
+catch(e){
+	console.log(e);
+}
+}
 
 
 }
