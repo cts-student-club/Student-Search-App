@@ -6,19 +6,46 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-
-  <input ion-text type="text" [(ngModel)]="question">
+<ion-content padding style="background-color: ">
+<ion-row center>  
+  <ion-col text-center>
+    <div class="list">
+        <input ion-text  placeholder = "Type or Search here ..." type="text" [(ngModel)]="question">
+    </div>
+  </ion-col>
+</ion-row>/
 
   <br />
 
-  <button ion-button block (click)="ask(question)">
-    ask
-  </button>
+ 
 
-  <div >
-    {{ answer }}
-  </div>
+<ion-row center>  
+ <ion-col text-center>   
+  <button ion-button  (click)="ask(question)"> Hit To Ask </button>  
+ </ion-col>               
+</ion-row>                                    
+
+<hr />
+<br /><br />
+<ion-row center>  
+ <ion-col text-center>
+  <h3> Tap here to Call Me</h3>
+  
+  <button ion-button  (click)="start()"> Hit To Ask </button> 
+</ion-col> 
+</ion-row>
+
+
+
+<ion-card>
+    <ion-card-content>
+      <div class="note-date">{{ answer }}</div>
+      <hr />
+      
+    </ion-card-content>
+</ion-card>
+
+
 
   
 

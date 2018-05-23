@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
-
+import { SpeechRecognition } from '@ionic-native/speech-recognition';
+import { Platform } from 'ionic-angular';
 
 
 @Component({
@@ -11,8 +12,31 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 export class HomePage {
 
    answer=" " ;
+   word = " " ;
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, public plt: Platform,public http: Http , private speechRecognition : SpeechRecognition) {
+
+}
+
+ngOnInit(){
+	try{
+	this.speechRecognition.hasPermission()
+	.then((hasPermission: boolean) => {
+
+		if(!hasPermission)
+		{
+			this.speechRecognition.requestPermission()
+			.then(
+				() => console.log("Granted"),
+				() => console.log("Denied")
+				)
+		}
+
+	});
+}
+catch(e){
+	console.log(e);
+}
 
 }
 
@@ -55,6 +79,11 @@ catch(e){
 	console.log(e);
 }
 }
+
+
+
+
+
 
 
 }
